@@ -9,8 +9,17 @@ function CreateTask() {
   const navigate = useNavigate();
 
   const [title, setTitle] = useState("");
+
   const [description, setDescription] = useState("");
+
   const [priority, setPriority] = useState("Medium");
+
+  const [error, setError] = useState("");
+
+
+
+
+
 
   const submitHandler = async (e) => {
 
@@ -25,13 +34,13 @@ function CreateTask() {
       );
 
       await axios.post(
-        "http://localhost:5000/api/tasks",
+        `${import.meta.env.VITE_API_URL}/api/tasks`,
         {
           title,
           description,
           priority,
           assignedTo: user._id,
-          projectId: "69fdbb13732dfc4463d4e6f7",
+          projectId: "69fd8b959c26ddaff24d1b19",
         },
         {
           headers: {
@@ -40,19 +49,25 @@ function CreateTask() {
         }
       );
 
-      alert("Task Created Successfully");
-
       navigate("/tasks");
 
     } catch (error) {
 
       console.log(error);
 
-      alert("Failed to create task");
+      setError("Failed to create task");
 
     }
 
   };
+
+
+
+
+
+
+
+
 
   return (
 
@@ -67,6 +82,33 @@ function CreateTask() {
           <h1 className="text-3xl font-bold mb-6">
             Create Task
           </h1>
+
+
+
+
+
+
+
+
+
+
+          {error && (
+
+            <div className="bg-red-100 text-red-600 p-3 rounded-lg mb-4">
+
+              {error}
+
+            </div>
+
+          )}
+
+
+
+
+
+
+
+
 
           <form
             onSubmit={submitHandler}
@@ -93,6 +135,14 @@ function CreateTask() {
             </div>
 
 
+
+
+
+
+
+
+
+
             <div>
 
               <label className="block mb-2 font-medium">
@@ -111,6 +161,14 @@ function CreateTask() {
               />
 
             </div>
+
+
+
+
+
+
+
+
 
 
             <div>
@@ -142,6 +200,14 @@ function CreateTask() {
               </select>
 
             </div>
+
+
+
+
+
+
+
+
 
 
             <button

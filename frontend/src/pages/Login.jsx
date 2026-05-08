@@ -17,6 +17,7 @@ function Login() {
 
 
 
+
   useEffect(() => {
 
     const token = localStorage.getItem("token");
@@ -35,6 +36,7 @@ function Login() {
 
 
 
+
   const submitHandler = async (e) => {
 
     e.preventDefault();
@@ -42,7 +44,7 @@ function Login() {
     try {
 
       const res = await axios.post(
-        "http://localhost:5000/api/auth/login",
+        `${import.meta.env.VITE_API_URL}/api/auth/login`,
         {
           email,
           password,
@@ -78,6 +80,7 @@ function Login() {
 
 
 
+
   return (
 
     <div className="min-h-screen flex justify-center items-center bg-gray-100">
@@ -94,6 +97,8 @@ function Login() {
 
 
 
+
+
         {error && (
 
           <div className="bg-red-100 text-red-600 p-3 rounded-lg mb-4">
@@ -103,6 +108,8 @@ function Login() {
           </div>
 
         )}
+
+
 
 
 
@@ -142,6 +149,7 @@ function Login() {
 
 
 
+
           <div>
 
             <label className="block mb-2 font-medium">
@@ -168,6 +176,8 @@ function Login() {
 
 
 
+
+
           <button
             type="submit"
             className="w-full bg-black text-white py-3 rounded-lg"
@@ -176,6 +186,8 @@ function Login() {
           </button>
 
         </form>
+
+
 
 
 

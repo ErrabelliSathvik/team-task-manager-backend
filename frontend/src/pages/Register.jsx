@@ -20,7 +20,6 @@ function Register() {
 
 
 
-
   useEffect(() => {
 
     const token = localStorage.getItem("token");
@@ -47,7 +46,7 @@ function Register() {
     try {
 
       const res = await axios.post(
-        "http://localhost:5000/api/auth/register",
+        `${import.meta.env.VITE_API_URL}/api/auth/register`,
         {
           name,
           email,
@@ -84,6 +83,7 @@ function Register() {
 
 
 
+
   return (
 
     <div className="min-h-screen flex justify-center items-center bg-gray-100">
@@ -93,6 +93,8 @@ function Register() {
         <h1 className="text-3xl font-bold mb-6 text-center">
           Register
         </h1>
+
+
 
 
 
@@ -151,6 +153,7 @@ function Register() {
 
 
 
+
           <div>
 
             <label className="block mb-2 font-medium">
@@ -169,6 +172,7 @@ function Register() {
             />
 
           </div>
+
 
 
 
@@ -205,6 +209,7 @@ function Register() {
 
 
 
+
           <button
             type="submit"
             className="w-full bg-black text-white py-3 rounded-lg"
@@ -213,6 +218,7 @@ function Register() {
           </button>
 
         </form>
+
 
 
 
